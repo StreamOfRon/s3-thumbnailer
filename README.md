@@ -16,8 +16,13 @@ REDIRECT_URL_BASE - the URL to prepend to the image path requested
 ### Optional Environment Parameters:
 
 AWS_REGION - the AWS region parameter
+
 S3_USE_SSL - Change this to false to disable the use of SSL.  Not recommended for production
+
 S3_VERIFY_SSL - Change this to false to disable verification of the server certificate.  Not recommended for production
+
 S3_ENDPOINT_URL - If you are using another S3-compatible service, specify the endpoint URL with this variable
+
 AWS_ACCESS_KEY_ID - The access key ID providing access to your S3-compatible storage bucket
+
 AWS_SECRET_ACCESS_KEY - The secret access key providing access to your S3-compatible bucket
