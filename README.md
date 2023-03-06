@@ -10,6 +10,7 @@ All configuration is done via the environment:
 ### Required Environment Parameters:
 
 S3_BUCKET - the name of the storage bucket on S3 or compatible
+
 REDIRECT_URL_BASE - the URL to prepend to the image path requested
 
 ### Optional Environment Parameters:
