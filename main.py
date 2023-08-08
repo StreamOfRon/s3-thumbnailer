@@ -47,18 +47,18 @@ def get_file(file_path):
         filedata = file.get()
       except ClientError as e:
         abort(e.response['Error']['Code'])
-      with Image.open(filedata.get('Body')) as image:
-        image.thumbnail(size=(width, height))
-        new_obj = bucket.Object(str(request_path))
-        with BytesIO() as b:
+      with BytesIO as b:
+        with Image.open(filedata.get('Body')) as image:
+          image.thumbnail(size=(width, height))
+          new_obj = bucket.Object(str(request_path))
           image.save(
             fp=b,
             format=request_path.suffix.lstrip('.')
           )
-          new_obj.put(
-            Body=b.getvalue(),
-            ContentType=filedata.get('ContentType')
-          )
+        new_obj.put(
+          Body=b.getvalue(),
+          ContentType=filedata.get('ContentType')
+        )
       return redirect(f"{os.environ.get('REDIRECT_URL_BASE')}/{request_path}")
   else:
     file = bucket.Object(str(orig_path))
